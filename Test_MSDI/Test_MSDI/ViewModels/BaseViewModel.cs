@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Test_MSDI.Models;
 using Test_MSDI.Services;
-using Xamarin.Forms;
 
 namespace Test_MSDI.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Item> DataStore => App.ServiceProvider.GetService<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy

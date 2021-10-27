@@ -1,19 +1,23 @@
 ﻿using System;
-using Test_MSDI.Services;
-using Test_MSDI.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Test_MSDI
 {
     public partial class App : Application
     {
+        /// <summary>
+        /// My DI container.
+        /// </summary>
+        public static IServiceProvider ServiceProvider { get; set; }
 
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //Init the DI or do it from the Platform Init.
+            //Startup.Init(null);
+
+            //DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
